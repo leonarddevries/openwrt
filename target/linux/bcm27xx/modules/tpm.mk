@@ -5,8 +5,8 @@ define KernelPackage/tpm-tis
   DEPENDS:= +kmod-tpm
   KCONFIG:= CONFIG_TCG_TIS
   FILES:= \
-	$(LINUX_DIR)/drivers/char/tpm/tpm_tis.ko \
-	$(LINUX_DIR)/drivers/char/tpm/tpm_tis_core.ko
+    $(LINUX_DIR)/drivers/char/tpm/tpm_tis.ko \
+    $(LINUX_DIR)/drivers/char/tpm/tpm_tis_core.ko
   AUTOLOAD:=$(call AutoLoad,20,tpm_tis,1)
 endef
 
