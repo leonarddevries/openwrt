@@ -25,10 +25,9 @@ $(eval $(call KernelPackage,tpm-tis))
 define KernelPackage/tpm-tis-spi
   SUBMENU:=$(OTHER_MENU)
   TITLE:=TPM SPI Support
-  DEPENDS:= +kmod-tpm
+  DEPENDS:= +kmod-tpm +kmod-tpm-tis
   KCONFIG:= CONFIG_TCG_TIS_SPI
   FILES:= \
-    $(LINUX_DIR)/drivers/char/tpm/tpm_tis_core.ko \
     $(LINUX_DIR)/drivers/char/tpm/tpm_tis_spi.ko
   AUTOLOAD:=$(call AutoLoad,40,tpm_tis_spi,1)
 endef
