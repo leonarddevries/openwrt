@@ -28,7 +28,7 @@ define KernelPackage/tpm-tis-spi
   DEPENDS:= +kmod-tpm
   KCONFIG:= CONFIG_TCG_TIS_SPI
   FILES:= \
-    $(LINUX_DIR)/drivers/char/tpm/tpm_tis_core.ko
+    $(LINUX_DIR)/drivers/char/tpm/tpm_tis_core.ko \
     $(LINUX_DIR)/drivers/char/tpm/tpm_tis_spi.ko
   AUTOLOAD:=$(call AutoLoad,40,tpm_tis_spi,1)
 endef
