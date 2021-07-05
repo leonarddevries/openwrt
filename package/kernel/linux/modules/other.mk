@@ -1159,7 +1159,7 @@ $(eval $(call KernelPackage,tpm))
 define KernelPackage/tpm-tis
   SUBMENU:=$(OTHER_MENU)
   TITLE:=TPM TIS 1.2 Interface / TPM 2.0 FIFO Interface
-	DEPENDS:= @TARGET_x86 +kmod-tpm
+  DEPENDS:= +kmod-tpm
   KCONFIG:= CONFIG_TCG_TIS
   FILES:= \
 	$(LINUX_DIR)/drivers/char/tpm/tpm_tis.ko \
@@ -1175,6 +1175,23 @@ define KernelPackage/tpm-tis/description
 endef
 
 $(eval $(call KernelPackage,tpm-tis))
+
+
+define KernelPackage/tpm-tis-spi
+  SUBMENU:=$(OTHER_MENU)
+  TITLE:=TPM SPI Support
+  DEPENDS:= +kmod-tpm +kmod-tpm-tis
+  KCONFIG:= CONFIG_TCG_TIS_SPI
+  FILES:= $(LINUX_DIR)/drivers/char/tpm/tpm_tis_spi.ko
+  AUTOLOAD:=$(call AutoLoad,40,tpm_tis_spi,1)
+endef
+
+define KernelPackage/tpm-tis-spi/description
+	This enables the TPM Interface Specification over SPI
+endef
+
+$(eval $(call KernelPackage,tpm-tis-spi))
+
 
 define KernelPackage/tpm-i2c-atmel
   SUBMENU:=$(OTHER_MENU)
